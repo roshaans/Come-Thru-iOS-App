@@ -1,0 +1,6 @@
+framework module Pods_Come_Thru {
+  umbrella header "Pods-Come Thru-umbrella.h"
+
+  export *
+  module * { export * }
+}
