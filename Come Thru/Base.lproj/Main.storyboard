@@ -9,27 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Event View Controller-->
-        <scene sceneID="Zq8-xZ-ccR">
-            <objects>
-                <viewController id="w1O-n9-hhI" customClass="EventViewController" customModule="Come_Thru" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="v8U-9H-R8W"/>
-                        <viewControllerLayoutGuide type="bottom" id="TKj-hO-1cc"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="te4-AT-JYJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="favorite" id="Z6N-cU-E80">
-                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
-                    </tabBarItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WdW-U9-D0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1095" y="-122"/>
-        </scene>
         <!--Tab Bar Controller View Controller-->
         <scene sceneID="Fqi-sL-czC">
             <objects>
@@ -42,7 +21,7 @@
                     <connections>
                         <segue destination="mht-P8-Kqg" kind="relationship" relationship="viewControllers" id="kZw-JT-56K"/>
                         <segue destination="kK9-DH-kSj" kind="relationship" relationship="viewControllers" id="mmo-Vy-sff"/>
-                        <segue destination="w1O-n9-hhI" kind="relationship" relationship="viewControllers" id="KUX-9p-Lau"/>
+                        <segue destination="PX5-ns-dWa" kind="relationship" relationship="viewControllers" id="KUX-9p-Lau"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TMd-4a-NLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -73,9 +52,18 @@
             </objects>
             <point key="canvasLocation" x="1095" y="533"/>
         </scene>
+        <!--EventNotification-->
+        <scene sceneID="9S5-pa-xlY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EventNotification" id="PX5-ns-dWa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="up2-lb-KW1"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zbH-5b-6LX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1095" y="-122"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="favorite" width="28" height="28"/>
         <image name="favorite copy" width="26" height="24"/>
         <image name="favorite copy 2" width="22" height="22"/>
     </resources>

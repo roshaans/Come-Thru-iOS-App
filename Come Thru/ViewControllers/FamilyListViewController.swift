@@ -8,43 +8,19 @@
 
 import UIKit
 import FirebaseDatabase
+import Firebase
 
 class FamilyListViewController: UIViewController, UITableViewDelegate {
     
-    
-    
-    var isInMyFamilyList = [String]()
-    var ref:DatabaseReference?
+    var emptyArray = [String]()
+    var users = [User2]()
+    var ref:DatabaseReference!
     var databaseHandle:DatabaseHandle?
+   
     
     @IBOutlet weak var myFamilyListTableView: UITableView!
     @IBAction func reloadButton(_ sender: UIBarButtonItem) {
-        ref = Database.database().reference()
-        
-        databaseHandle = ref?.child("following").child(User.current.username).observe(.childAdded, with: { (snapshot) in
-            
-            let username = snapshot.key as? String
-            
-            if let userr = username {
-                
-                self.isInMyFamilyList = Array(Set(self.isInMyFamilyList))
-                
-                self.isInMyFamilyList.append(userr)
-                self.isInMyFamilyList = Array(Set(self.isInMyFamilyList))
-                
-                
-                self.myFamilyListTableView.reloadData()
-                
-                
-                
-            }
-        })
-        
-        
-        isInMyFamilyList = Array(Set(isInMyFamilyList))
-        print("Myfamily list contains \(isInMyFamilyList)")
-        
-    }
+           }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,48 +28,70 @@ class FamilyListViewController: UIViewController, UITableViewDelegate {
         myFamilyListTableView.delegate = self
         myFamilyListTableView.tableFooterView = UIView()
         myFamilyListTableView.rowHeight = 71
-        
-        
+//        let user = User(uid: "hello", username: "userrr")
+      
+        //reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         
-        ref = Database.database().reference()
-        
-        databaseHandle = ref?.child("following").child(User.current.username).observe(.childAdded, with: { (snapshot) in
-            
-            let username = snapshot.key as? String
-            
-            if let userr = username {
-                
-                self.isInMyFamilyList = Array(Set(self.isInMyFamilyList))
-                
-                self.isInMyFamilyList.append(userr)
-                self.isInMyFamilyList = Array(Set(self.isInMyFamilyList))
-                self.myFamilyListTableView.reloadData()
-                
-                
-                
-            }
-        })
-        
-        
-        isInMyFamilyList = Array(Set(isInMyFamilyList))
-        print("Myfamily list contains \(isInMyFamilyList)")}
+        reloadData()
+       
+    }
     //
     
     
+    func reloadData() {
+        self.emptyArray = []
+        
+        ref = Database.database().reference()
+        
+        ref.child("following").child(User.current.username).observeSingleEvent(of: .value, with: { (snapshot) in
+       
+            print("We are running it")
+            
+            if let dict = snapshot.value as? [String: Bool] {
+               
+                for (key, _) in dict {
+                    self.emptyArray.append("\(key)")
+                    print(self.emptyArray)
+                    
+                }
+                    self.myFamilyListTableView.reloadData()
+//                let username = dict["\(User.current.username)"] as! String
+//                let user = User2(username: username)
+//               
+//                
+//                self.users.append(user)
+//               print("Snapshot printing")
+//                print(self.users)
+                           }
+            self.myFamilyListTableView.reloadData()
+            
     
+            
+        
+     
     
-    
-    
+        }
+        )
+    }
 }
 
+
+
 extension FamilyListViewController: UITableViewDataSource {
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        
+//    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return isInMyFamilyList.count
+        print(emptyArray.count)
+        print("Printing count")
+        return emptyArray.count
+        
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -104,10 +102,10 @@ extension FamilyListViewController: UITableViewDataSource {
     
     func configure(cell: familyCell, atIndexPath indexPath: IndexPath) {
         
-        let username = isInMyFamilyList[indexPath.row]
+       let username = emptyArray[indexPath.row]
         
         
-        cell.labelText.text = username
+       cell.labelText.text = username
         
         
     }

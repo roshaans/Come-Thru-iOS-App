@@ -11,7 +11,7 @@ import UIKit
 class FIndFamilyViewController: UIViewController {
     
     var users = [User]()
-    var isFamilyList = [User]()
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,15 +21,29 @@ class FIndFamilyViewController: UIViewController {
         
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 70
-//        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        
+        
+    NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        
+        
         // Do any additional setup after loading the view.
     }
     
-//    func loadList(notification: NSNotification){
-//       
-//                self.tableView.reloadData()
+    func loadList(notification: NSNotification){
+       
+                self.tableView.reloadData()
+           
+    }
+
+    
+    
+//     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+//        if segue.destination is FamilyListViewController {
 //           
-//    }
+//                   }
+//        }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

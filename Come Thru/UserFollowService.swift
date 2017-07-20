@@ -38,7 +38,7 @@ struct UserFollowService {
     }
     static func usersExcludingCurrentUser(completion: @escaping ([User]) -> Void) {
         
-        let currentUser = User.current
+        let currentUser = User.current.username
         // 1
         let ref = Database.database().reference().child("usersTest")
         
@@ -51,7 +51,7 @@ struct UserFollowService {
             let users =
                 snapshot
                     .flatMap(User.init)
-                    .filter { $0.uid != currentUser.uid }
+                    .filter { $0.username != currentUser }
             
             // 4
             let dispatchGroup = DispatchGroup()
@@ -94,17 +94,10 @@ struct UserFollowService {
     
     
     
-    
-    
-    
-
-    
-    
-    
     private static func unfollowUser(_ user: User, forCurrentUserWithSuccess success: @escaping (Bool) -> Void) {
         let currentUID = User.current.username
         
-        let followData = ["followers/\(user.username)/\(currentUID)" : NSNull(),
+        let followData = ["followers/\(user.uid)/\(currentUID)" : NSNull(),
                           "following/\(currentUID)/\(user.username)" : NSNull()]
         
         let ref = Database.database().reference()
@@ -114,8 +107,10 @@ struct UserFollowService {
                 success(false)
             }
             
+            
             success(true)
-        
+            
+            
         }
     }
     
@@ -140,8 +135,9 @@ struct UserFollowService {
             
             
             followingUsers.append(user.username)
-            
             success(true)
+            
+        
         }}
     
     static func setIsFollowing(_ isFamily: Bool, fromCurrentUserTo followee: User, success: @escaping (Bool) -> Void) {
@@ -154,7 +150,7 @@ struct UserFollowService {
     
     
     static func isUserFollowed(_ user: User, byCurrentUserWithCompletion completion: @escaping (Bool) -> Void) {
-        let currentUID = User.current.uid
+        let currentUID = User.current.username
         let ref = Database.database().reference().child("followers").child(user.uid)
         
         ref.queryEqual(toValue: nil, childKey: currentUID).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -181,6 +177,8 @@ struct UserFollowService {
             
         
     }
+    
+    
 
 }
     //    static func addUsername(_ firUser: FIRUser, _ user: User, forfollowedSuccess success: @escaping (Bool) -> Void) {

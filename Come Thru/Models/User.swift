@@ -14,21 +14,22 @@ import FirebaseDatabase.FIRDataSnapshot
 class User: NSObject {
     
         // MARK: - Properties
-    
+
         var isFamily = false
         let uid: String
         let username: String
-    
+    static var isInMyFamilyList = [String: Bool]()
     
         // MARK: - Init/Users/roshaansiddiqui/Desktop/Makeschool2017/Come Thru/Come Thru.xcodeproj
         
         init(uid: String, username: String) {
             
-            self.uid = username
+            self.uid = uid
             self.username = username
             super.init()
         }
-        
+    
+   
         init?(snapshot: DataSnapshot) {
           
             guard let dict = snapshot.value as? [String : Any],

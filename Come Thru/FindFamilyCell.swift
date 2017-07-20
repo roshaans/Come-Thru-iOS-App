@@ -9,6 +9,7 @@
 import UIKit
 protocol FIndFamilyCellDelegate: class {
     func didTapFollowButton(_ followButton: UIButton, on cell: FindFamilyCell)
+    
 }
 
 class FindFamilyCell: UITableViewCell {
