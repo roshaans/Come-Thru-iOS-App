@@ -9,8 +9,12 @@
 import UIKit
 
 import FirebaseDatabase
+
 class EventViewController: UIViewController {
+    var usernameRef: DatabaseReference!
+
     var segment = 0
+    
     var ref:DatabaseReference!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     var event = [Event]()
@@ -22,18 +26,17 @@ class EventViewController: UIViewController {
         case 1:
             segment = 1
         default:
+            
             break
         }
+        eventViewTable.reloadData()
             }
     @IBOutlet weak var eventViewTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        if segmentedControl.selectedSegmentIndex == 0 {
-//            testLabel.text = "0"
-        }
-        else if segmentedControl.selectedSegmentIndex == 1 {
-//                testLabel.text = "1"
-        }
+        
+     //   loopOverUid()
+        retrieveUID()
         
         eventViewTable.dataSource = self
         
@@ -44,63 +47,91 @@ class EventViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         if segmentedControl.selectedSegmentIndex == 0 {
-//            testLabel.text = "0"
+                print("Created Events clicked")
         }
         else if segmentedControl.selectedSegmentIndex == 1 {
-//            testLabel.text = "1"
+            print("Created Invited clicked")
         }
+       // loopOverUid()
 
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func checkEventUID() {
+    var arrayOfStrings = [String]()
+    func retrieveUID() {
+        
+        
+        usernameRef = Database.database().reference().child("usersTest").child("\(User.current.uid)")
+            usernameRef.child("Event Creation Keys").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if let arraysOfStrings = snapshot.value as? [String] {
+                    
+                    self.arrayOfStrings.append(contentsOf: arraysOfStrings)
+                    print(self.arrayOfStrings)
+                    
+                    self.loopOverUid()
+                
+                }
+                
+            
+            
+            })
+        }
+    
+
+    func loopOverUid(){
+        self.event = [Event]()
+        print(arrayOfStrings)
+        print( "THIS IS THE ARRAY OF STRING")
+        for item in arrayOfStrings {
+            //NOTTTTTTEEEE!!!!!!! FIRST ADD SOMETHING TO THE ARRAY OF STRINGS IDIOT
+            ref = Database.database().reference().child("CreatedEvents").child("\(User.current.username)")
+            ref.child("\(item)").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+                if let dict = snapshot.value as? [String: String] {
+                    print("ABOUT TO PRINT EVENT!!!")
+                    let whereis = dict["Where"]!
+                    let whenis = dict["When"]!
+                    let whatis = dict["What"]!
+                    let AdditionalInfo = dict["AdditionalInfo"]!
+                    
+                    let events = Event(whatis: whatis, whereis: whereis, whenis: whenis, AdditionalInfo: AdditionalInfo)
+                    self.event.append(events)
+                    print("ABOUT TO PRINT EVENT!!!")
+                    print(self.event)
+                    self.eventViewTable.reloadData()
+                    ////                for (key, _) in dict {
+                    ////                    self.emptyArray.append("\(key)")
+                    ////                    print(self.emptyArray)
+                    
+                }
+                //              //  self.myFamilyListTableView.reloadData()
+                //
+                //            }
+                //self.myFamilyListTableView.reloadData()
+                
+                
+                
+                
+                
+                
+            }
+            )
+        }
+    
+        }
+        
+        
+    
     }
-    func reloadEventData() {
-        self.event = []
-        
-        ref = Database.database().reference().child("CreatedEvents").child("\(User.current.username)")
-        
+    
+    
+
 //        child("\(key)")
         
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            print("Running this!")
-            
-           print(snapshot.value)
-//            if let dict = snapshot.value as? [String: String] {
-//                
-//                let whereis = dict["Where"] as! String
-//                let whenis = dict["When"] as! String
-//                let whatis = dict["What"] as! String
-//                let AdditionalInfo = dict["AdditionalInfo"] as! String
-//                
-//                let events = Event(whatis: whatis, whereis: whereis, whenis: whenis, AdditionalInfo: AdditionalInfo)
-//                self.event.append(events)
-//                print("ABOUT TO PRINT EVENT!!!")
-//                print(self.event)
-////                for (key, _) in dict {
-////                    self.emptyArray.append("\(key)")
-////                    print(self.emptyArray)
-//                
-////                }
-//              //  self.myFamilyListTableView.reloadData()
-//               
-//            }
-            //self.myFamilyListTableView.reloadData()
-            
-            
-            
-            
-            
-            
-        }
-        )
-    }
-}
-
-
+       
     /*
     // MARK: - Navigation
 
@@ -115,19 +146,31 @@ class EventViewController: UIViewController {
 
 extension EventViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+       print("The count of the rows is ")
+        return self.event.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = eventViewTable.dequeueReusableCell(withIdentifier: "EventCell") as! EventCellTableViewCell
-        
-        configure(cell: cell, atIndexPath: indexPath)
-        
-        return cell
-    }
     
-    func configure(cell: EventCellTableViewCell, atIndexPath indexPath: IndexPath) {
+        switch segment  {
+        case 0:
+             let cell = eventViewTable.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCellTableViewCell
+            cell.whatLabel?.text = event[indexPath.row].whatis
+            cell.whereLabel?.text = event[indexPath.row].whereis
+            cell.whenLabel?.text = event[indexPath.row].whenis
+            cell.addLabel?.text = event[indexPath.row].AdditionalInfo
+            return cell
         
-    
+        case 1:
+            let cell = eventViewTable.dequeueReusableCell(withIdentifier: "invitedEventCell", for: indexPath) as! EventCellTableViewCell
+            return cell
+        default:
+            break
+       
+        }
+    let cell = eventViewTable.dequeueReusableCell(withIdentifier: "nothing", for: indexPath) as! EventCellTableViewCell
+       return cell
+        
+        
     }
 }
