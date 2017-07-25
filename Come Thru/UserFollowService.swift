@@ -23,6 +23,7 @@ struct UserFollowService {
             ref.observeSingleEvent(of: .value, with: { (snapshot) in
                 let user = User(snapshot: snapshot)
                 completion(user)
+                
             })
         }
     }
@@ -61,6 +62,7 @@ struct UserFollowService {
                 // 5
                 UserFollowService.isUserFollowed(user) { (isFamily) in
                     user.isFamily = isFamily
+                    
                     dispatchGroup.leave()
                 }
             }
@@ -97,7 +99,7 @@ struct UserFollowService {
     private static func unfollowUser(_ user: User, forCurrentUserWithSuccess success: @escaping (Bool) -> Void) {
         let currentUID = User.current.username
         
-        let followData = ["followers/\(user.uid)/\(currentUID)" : NSNull(),
+        let followData = ["followers/\(user.username)/\(currentUID)" : NSNull(),
                           "following/\(currentUID)/\(user.username)" : NSNull()]
         
         let ref = Database.database().reference()
@@ -119,7 +121,7 @@ struct UserFollowService {
     private static func followUser(_ user: User, forCurrentUserWithSuccess success: @escaping (Bool) -> Void) {
         let currentUID = User.current.username
         let followData = [
-            "followers/\(user.uid)/\(currentUID)" : true ,
+            "followers/\(user.username)/\(currentUID)" : true ,
             "following/\(currentUID)/\(user.username)" : true]
         
         
@@ -151,8 +153,8 @@ struct UserFollowService {
     
     static func isUserFollowed(_ user: User, byCurrentUserWithCompletion completion: @escaping (Bool) -> Void) {
         let currentUID = User.current.username
-        let ref = Database.database().reference().child("followers").child(user.uid)
-        
+        let ref = Database.database().reference().child("followers").child(user.username)
+
         ref.queryEqual(toValue: nil, childKey: currentUID).observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? [String : Bool] {
                 completion(true)

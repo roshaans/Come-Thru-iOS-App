@@ -1,6 +1,6 @@
 //
 //  EventCellTableViewCell.swift
-//  Come Thru
+//  Come Thruxccgjk
 //
 //  Created by Roshaan Siddiqui on 7/20/17.
 //  Copyright © 2017 Roshaan Siddiqui. All rights reserved.
@@ -8,24 +8,24 @@
 
 import UIKit
 
-class EventCellTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var whatLabel: UILabel!
-    @IBOutlet weak var whereLabel: UILabel!
-    @IBOutlet weak var whenLabel: UILabel!
-    @IBOutlet weak var addLabel: UILabel!
+class EventCreatedCell: UITableViewCell {
+    
+    @IBOutlet weak var addInvitedLabel: UILabel!
+    @IBOutlet weak var whenIvitedLabel: UILabel!
+    @IBOutlet weak var whereInvitedLabel: UILabel!
+    @IBOutlet weak var whatInvitedLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
 
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
-   
     }
-
+    
 }

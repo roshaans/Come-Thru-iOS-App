@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83082C9D1F22415100AB074D /* EventCreatedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83082C9C1F22415100AB074D /* EventCreatedCell.swift */; };
 		83088A261F20FEAF00B57A7A /* User2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83088A251F20FEAF00B57A7A /* User2.swift */; };
 		83088A2B1F2115FF00B57A7A /* EventNotification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83088A291F2115FF00B57A7A /* EventNotification.storyboard */; };
 		83088A301F2116A100B57A7A /* EventCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83088A2F1F2116A100B57A7A /* EventCellTableViewCell.swift */; };
@@ -33,11 +34,14 @@
 		831986DA1F167A7800F467D9 /* familyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831986D91F167A7800F467D9 /* familyCell.swift */; };
 		831987211F17D57D00F467D9 /* UserFollowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831987201F17D57D00F467D9 /* UserFollowService.swift */; };
 		83831B2F1F1C00DE000747D3 /* Storyboard + Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83831B2E1F1C00DE000747D3 /* Storyboard + Utility.swift */; };
+		83F3E8281F267B2F0098B2EB /* Samsung-Galaxy-S5-Wallpapers-Sunset-6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83F3E8271F267B2F0098B2EB /* Samsung-Galaxy-S5-Wallpapers-Sunset-6.jpg */; };
+		83F3E82C1F26DE580098B2EB /* SkyBG2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 83F3E82B1F26DE580098B2EB /* SkyBG2.jpeg */; };
 		D42D546FD5DB7CA2D73D9A62 /* Pods_Come_Thru.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED7F3D2F69D28194F142864B /* Pods_Come_Thru.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7637EA8F522C437F9739EAFF /* Pods-Come Thru.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Come Thru.release.xcconfig"; path = "Pods/Target Support Files/Pods-Come Thru/Pods-Come Thru.release.xcconfig"; sourceTree = "<group>"; };
+		83082C9C1F22415100AB074D /* EventCreatedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCreatedCell.swift; sourceTree = "<group>"; };
 		83088A251F20FEAF00B57A7A /* User2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User2.swift; sourceTree = "<group>"; };
 		83088A2A1F2115FF00B57A7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EventNotification.storyboard; sourceTree = "<group>"; };
 		83088A2F1F2116A100B57A7A /* EventCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 		831986D91F167A7800F467D9 /* familyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = familyCell.swift; sourceTree = "<group>"; };
 		831987201F17D57D00F467D9 /* UserFollowService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFollowService.swift; sourceTree = "<group>"; };
 		83831B2E1F1C00DE000747D3 /* Storyboard + Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard + Utility.swift"; sourceTree = "<group>"; };
+		83F3E8271F267B2F0098B2EB /* Samsung-Galaxy-S5-Wallpapers-Sunset-6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Samsung-Galaxy-S5-Wallpapers-Sunset-6.jpg"; sourceTree = "<group>"; };
+		83F3E82B1F26DE580098B2EB /* SkyBG2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SkyBG2.jpeg; sourceTree = "<group>"; };
 		BB1A0D99DC84B0E53C168190 /* Pods-Come Thru.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Come Thru.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Come Thru/Pods-Come Thru.debug.xcconfig"; sourceTree = "<group>"; };
 		ED7F3D2F69D28194F142864B /* Pods_Come_Thru.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Come_Thru.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -132,6 +138,8 @@
 				83088A291F2115FF00B57A7A /* EventNotification.storyboard */,
 				8311B5F71F15892D00BD1CCD /* CreateEvent.storyboard */,
 				8311B5EC1F151CF600BD1CCD /* FamilyList.storyboard */,
+				83F3E8271F267B2F0098B2EB /* Samsung-Galaxy-S5-Wallpapers-Sunset-6.jpg */,
+				83F3E82B1F26DE580098B2EB /* SkyBG2.jpeg */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -147,6 +155,7 @@
 				831986D91F167A7800F467D9 /* familyCell.swift */,
 				8311B5F91F15895600BD1CCD /* CreateEventViewController.swift */,
 				83088A2F1F2116A100B57A7A /* EventCellTableViewCell.swift */,
+				83082C9C1F22415100AB074D /* EventCreatedCell.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -266,9 +275,11 @@
 				8311B5C71F13EA4600BD1CCD /* GoogleService-Info.plist in Resources */,
 				8311B5A41F13D99C00BD1CCD /* Assets.xcassets in Resources */,
 				8311B5F81F15892D00BD1CCD /* CreateEvent.storyboard in Resources */,
+				83F3E82C1F26DE580098B2EB /* SkyBG2.jpeg in Resources */,
 				83088A2B1F2115FF00B57A7A /* EventNotification.storyboard in Resources */,
 				8311B5CB1F13FBB600BD1CCD /* Default-568h@2x.png in Resources */,
 				8311B5EE1F151CF600BD1CCD /* FamilyList.storyboard in Resources */,
+				83F3E8281F267B2F0098B2EB /* Samsung-Galaxy-S5-Wallpapers-Sunset-6.jpg in Resources */,
 				8311B59F1F13D99C00BD1CCD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,6 +344,7 @@
 				8311B5FA1F15895600BD1CCD /* CreateEventViewController.swift in Sources */,
 				8311B5BC1F13E69100BD1CCD /* FamilyListViewController.swift in Sources */,
 				830FCAFE1F1FF8C100CD9B92 /* User.swift in Sources */,
+				83082C9D1F22415100AB074D /* EventCreatedCell.swift in Sources */,
 				83088A261F20FEAF00B57A7A /* User2.swift in Sources */,
 				8311B5A21F13D99C00BD1CCD /* Come_Thru.xcdatamodeld in Sources */,
 				831987211F17D57D00F467D9 /* UserFollowService.swift in Sources */,

@@ -12,9 +12,10 @@ class CreateEventViewController: UIViewController {
     
     var ref: DatabaseReference!
 var usernameRef: DatabaseReference!
+    var usernamesRef: DatabaseReference!
     var progressList = [UITextField]()
     var newArrayOfStrings = [String]()
-
+var usernamesInFamilyList = [String]()
     
     @IBOutlet weak var whatField: UITextField!
        @IBOutlet weak var whenField: UITextField!
@@ -73,7 +74,8 @@ var usernameRef: DatabaseReference!
         alert.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.default, handler: { action in
             
             
-            self.addKeyToArray()
+         //   self.addKeyToArray()
+            self.checkWhoIsInFamilyList()
             self.progressBar.setProgress(1.0, animated: true)
             
             let when = DispatchTime.now() + 1 // change 2 to desired number of seconds
@@ -88,18 +90,50 @@ var usernameRef: DatabaseReference!
    
     
   override func viewWillAppear(_ animated: Bool) {
+//    checkWhoIsInFamilyList()
+// print("I just printed all of your family members :)")
+//    checkWhoIsInFamilyList()
+
+    }
     
-    
+    func checkWhoIsInFamilyList() {
+        
+        usernamesRef = Database.database().reference()
+        usernamesRef.child("following").child(User.current.username).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            self.usernamesInFamilyList = []
+            
+            if let dict = snapshot.value as? [String: Bool] {
+                
+                for (key, _) in dict {
+                    self.usernamesInFamilyList.append("\([key] as [String])")
+                   
+                }
+              
+                self.addKeyToArray()//                self.myFamilyListTableView.reloadData()
+            }
+            
+            
+            //            self.myFamilyListTableView.reloadData()
+            
+        }
+        )
     }
     
     
     func addKeyToArray(){
+        //self.checkWhoIsInFamilyList()
         let key = ref.childByAutoId().key
+        let usersinFamilyList = self.usernamesInFamilyList
         let events = ["ID": key,
                       "What": whatField.text! as String,
                       "Where": whereField.text! as String,
                       "When": whenField.text! as String,
                       "AdditionalInfo": additionalField.text! as String]
+//            ,
+//                      "Who?": self.usernamesInFamilyList as [String]] as [String : Any]
+        let event2 = ["Who:": self.usernamesInFamilyList as [String]]
+        print("Print out family list \(usersinFamilyList)")
         var keyString = [key]
 
         
@@ -114,14 +148,14 @@ var usernameRef: DatabaseReference!
         
         self.ref.child(key).setValue(events)
         self.usernameRef.child("Event Creation Keys").setValue(keyString)
-
+       
          print(keyString)
         })
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ref = Database.database().reference().child("CreatedEvents").child("\(User.current.username)")
+       ref = Database.database().reference().child("Events").child("\(User.current.uid)")
         
         
         usernameRef = Database.database().reference().child("usersTest").child("\(User.current.uid)")

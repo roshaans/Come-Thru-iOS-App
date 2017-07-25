@@ -9,26 +9,19 @@
 import UIKit
 
 class FIndFamilyViewController: UIViewController {
+    //MARK: - Properties
     
     var users = [User]()
-    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         tableView.dataSource = self
-        
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 70
         
-        
     NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
-        
-        
         // Do any additional setup after loading the view.
     }
-    
     func loadList(notification: NSNotification){
        
                 self.tableView.reloadData()
@@ -74,6 +67,7 @@ extension FIndFamilyViewController: UITableViewDataSource {
         return users.count
     }
     
+    //FIXME: Fix blah blah
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FindFamilyCell") as! FindFamilyCell
         cell.delegate = self

@@ -12,6 +12,7 @@ import Firebase
 
 class FamilyListViewController: UIViewController, UITableViewDelegate {
     
+    @IBOutlet weak var imageScreen: UIImageView!
     var emptyArray = [String]()
     var users = [User2]()
     var ref:DatabaseReference!
@@ -25,6 +26,9 @@ class FamilyListViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        view?.backgroundColor = UIColor(white: 1, alpha: 0.5)
+//        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"abstract-1779557_960_720.png"]]]
+
         myFamilyListTableView.delegate = self
         myFamilyListTableView.tableFooterView = UIView()
         myFamilyListTableView.rowHeight = 71
@@ -102,6 +106,7 @@ extension FamilyListViewController: UITableViewDataSource {
     
     func configure(cell: familyCell, atIndexPath indexPath: IndexPath) {
         
+    
        let username = emptyArray[indexPath.row]
         
         
