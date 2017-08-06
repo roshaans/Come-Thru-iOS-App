@@ -2,4 +2,84 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Come Thru/ViewControllers/FIndFamilyViewController.swift"
+            timestampString = "523690862.957268"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "FIndFamilyViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Come_Thru.FIndFamilyViewController.tableView.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITableView&gt;"
+                  moduleName = "Come Thru"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roshaansiddiqui/Desktop/Makeschool2017/Come%20Thru/Come%20Thru/ViewControllers/FIndFamilyViewController.swift"
+                  timestampString = "523691381.230039"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Come_Thru.FIndFamilyViewController.tableView.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITableView&gt;"
+                  moduleName = "Come Thru"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roshaansiddiqui/Desktop/Makeschool2017/Come%20Thru/Come%20Thru/ViewControllers/FIndFamilyViewController.swift"
+                  timestampString = "523691381.23496"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Come_Thru.FIndFamilyViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Come_Thru.FIndFamilyViewController"
+                  moduleName = "Come Thru"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roshaansiddiqui/Desktop/Makeschool2017/Come%20Thru/Come%20Thru/ViewControllers/FIndFamilyViewController.swift"
+                  timestampString = "523691381.240708"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "121">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Come_Thru.FIndFamilyViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Come_Thru.FIndFamilyViewController&gt;"
+                  moduleName = "Come Thru"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roshaansiddiqui/Desktop/Makeschool2017/Come%20Thru/Come%20Thru/ViewControllers/FIndFamilyViewController.swift"
+                  timestampString = "523691381.245954"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -13,7 +13,7 @@
         <!--Family List-->
         <scene sceneID="TOZ-OX-uSn">
             <objects>
-                <viewController title="Family List" id="aH6-5P-4zK" customClass="FamilyListViewController" customModule="Come_Thru" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Family List" automaticallyAdjustsScrollViewInsets="NO" id="aH6-5P-4zK" customClass="FamilyListViewController" customModule="Come_Thru" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yrd-Te-mjV"/>
                         <viewControllerLayoutGuide type="bottom" id="em9-7a-sgo"/>
@@ -30,7 +30,7 @@
                                 <rect key="frame" x="0.0" y="316" width="375" height="307"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="pGJ-3N-iwi">
+                                    <tableView clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="pGJ-3N-iwi">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="307"/>
                                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <prototypes>
@@ -137,7 +137,14 @@
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Find Your Family!" id="0gI-9X-zF4"/>
+                    <navigationItem key="navigationItem" title="Find Your Family!" id="0gI-9X-zF4">
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" style="plain" id="ydS-5x-eVj">
+                            <color key="tintColor" red="0.092363522376543217" green="0.17887972608024691" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="signOutButton:" destination="aH6-5P-4zK" id="s8Y-lb-fNn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="myFamilyListTableView" destination="pGJ-3N-iwi" id="dLH-cF-10g"/>

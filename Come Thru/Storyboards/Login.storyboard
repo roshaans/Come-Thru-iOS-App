@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="FPs-Uo-R1d">
             <objects>
-                <viewController id="saX-8k-EjU" customClass="LoginViewController" customModule="Come_Thru" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="saX-8k-EjU" customClass="LoginViewController" customModule="Come_Thru" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="idy-Tb-nco"/>
                         <viewControllerLayoutGuide type="bottom" id="6ex-U6-Fgt"/>

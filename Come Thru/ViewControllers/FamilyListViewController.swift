@@ -8,13 +8,32 @@
 
 import UIKit
 import FirebaseDatabase
-import Firebase
+import FirebaseAuthUI
+import FirebaseAuth
 
 class FamilyListViewController: UIViewController, UITableViewDelegate {
     
+    
+    @IBAction func signOutButton(_ sender: Any) {
+        
+        if Auth.auth().currentUser != nil {
+            do {
+                try? Auth.auth().signOut()
+                
+                if Auth.auth().currentUser == nil {
+                    let loginVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "Login") as! LoginViewController
+                    
+                    self.present(loginVC, animated: true, completion: nil)
+                    
+                }
+            }
+        }
+        
+    }
     @IBOutlet weak var imageScreen: UIImageView!
+    
     var emptyArray = [String]()
-    var users = [User2]()
+    
     var ref:DatabaseReference!
     var databaseHandle:DatabaseHandle?
    
@@ -26,15 +45,11 @@ class FamilyListViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        view?.backgroundColor = UIColor(white: 1, alpha: 0.5)
-//        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"abstract-1779557_960_720.png"]]]
-
         myFamilyListTableView.delegate = self
         myFamilyListTableView.tableFooterView = UIView()
         myFamilyListTableView.rowHeight = 71
-//        let user = User(uid: "hello", username: "userrr")
-      
-        //reloadData()
+
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,14 +79,7 @@ class FamilyListViewController: UIViewController, UITableViewDelegate {
                     
                 }
                     self.myFamilyListTableView.reloadData()
-//                let username = dict["\(User.current.username)"] as! String
-//                let user = User2(username: username)
-//               
-//                
-//                self.users.append(user)
-//               print("Snapshot printing")
-//                print(self.users)
-                           }
+            }
             self.myFamilyListTableView.reloadData()
             
     
@@ -87,9 +95,7 @@ class FamilyListViewController: UIViewController, UITableViewDelegate {
 
 
 extension FamilyListViewController: UITableViewDataSource {
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        
-//    }
+ 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         print(emptyArray.count)

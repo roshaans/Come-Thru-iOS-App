@@ -14,18 +14,23 @@ struct UserFollowService {
     static func create(_ firUser: FIRUser, username: String, completion: @escaping (User?) -> Void) {
         let userAttrs = ["username": username]
         
-        let ref = Database.database().reference().child("usersTest").child(firUser.uid)
-        ref.setValue(userAttrs) { (error, ref) in
+        let ref = Database.database().reference()
+        ref.child("usersTest").child(firUser.uid).setValue(userAttrs) { (error, ref) in
             if let error = error {
                 assertionFailure(error.localizedDescription)
                 return completion(nil)
             }
+            
             ref.observeSingleEvent(of: .value, with: { (snapshot) in
                 let user = User(snapshot: snapshot)
                 completion(user)
                 
             })
         }
+        
+        ref.child("userTest").child(firUser.uid).child("invitations")
+        
+
     }
     static func show(forUID uid: String, completion: @escaping (User?) -> Void) {
         let ref = Database.database().reference().child("usersTest").child(uid)
@@ -78,19 +83,7 @@ struct UserFollowService {
     
     
     
-    //                static func followers(for user: User, completion: @escaping ([String]) -> Void) {
-    //                    let followersRef = Database.database().reference().child("followers").child(user.uid)
-    //
-    //                    followersRef.observeSingleEvent(of: .value, with: { (snapshot) in
-    //                        guard let followersDict = snapshot.value as? [String : Bool] else {
-    //                            return completion([])
-    //                        }
-    //
-    //                        let followersKeys = Array(followersDict.keys)
-    //                        completion(followersKeys)
-    //                    })
-    //                }
-    
+  
     
     
     
@@ -100,7 +93,8 @@ struct UserFollowService {
         let currentUID = User.current.username
         
         let followData = ["followers/\(user.username)/\(currentUID)" : NSNull(),
-                          "following/\(currentUID)/\(user.username)" : NSNull()]
+                          "following/\(currentUID)/\(user.username)" : NSNull(),
+                          "usersTest/\(User.current.uid)/family/\(user.username)" : NSNull()]
         
         let ref = Database.database().reference()
         ref.updateChildValues(followData) { (error, ref) in
@@ -122,8 +116,8 @@ struct UserFollowService {
         let currentUID = User.current.username
         let followData = [
             "followers/\(user.username)/\(currentUID)" : true ,
-            "following/\(currentUID)/\(user.username)" : true]
-        
+            "following/\(currentUID)/\(user.username)" : true,
+            "usersTest/\(User.current.uid)/family/\(user.username)" : user.uid] as [String : Any]
         
         print("YOU ARE RIGHT HERE")
         let ref = Database.database().reference()
@@ -164,18 +158,7 @@ struct UserFollowService {
         })
     
    
-            
-            //            let ref2 = Database.database().reference()
-            //
-            //            let userName = firUser
-            
-            
-            //            ref.setValue(userAttrs) { (error, ref) in
-            //                if let error = error {
-            //                    assertionFailure(error.localizedDescription)
-            //                    return completion(nil)
-            //                }
-            //                }
+        
             
         
     }
@@ -183,12 +166,6 @@ struct UserFollowService {
     
 
 }
-    //    static func addUsername(_ firUser: FIRUser, _ user: User, forfollowedSuccess success: @escaping (Bool) -> Void) {
-    //        let ref = Database.database().reference()
-    //
-    //
-    //        let currentUI = User.current.uid
-    //
-    //    }
+
 
 

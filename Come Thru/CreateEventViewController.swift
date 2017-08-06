@@ -11,12 +11,15 @@ import FirebaseDatabase
 class CreateEventViewController: UIViewController {
     
     var ref: DatabaseReference!
-var usernameRef: DatabaseReference!
+    var usernameRef: DatabaseReference!
+    var invitations: DatabaseReference!
     var usernamesRef: DatabaseReference!
+    var reference: DatabaseReference!
     var progressList = [UITextField]()
     var newArrayOfStrings = [String]()
+    var uidOfFamily = [User]()
 var usernamesInFamilyList = [String]()
-    
+    var inviteesList = [String]()
     @IBOutlet weak var whatField: UITextField!
        @IBOutlet weak var whenField: UITextField!
 
@@ -72,10 +75,10 @@ var usernamesInFamilyList = [String]()
         alert.addAction(UIAlertAction(title: "Edit or Cancel", style: UIAlertActionStyle.destructive, handler: nil))
         
         alert.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.default, handler: { action in
+            //THIS IS THE CODE THAT GOES GETS RUN!
             
-            
-         //   self.addKeyToArray()
-            self.checkWhoIsInFamilyList()
+         
+            self.addKeyToArray()
             self.progressBar.setProgress(1.0, animated: true)
             
             let when = DispatchTime.now() + 1 // change 2 to desired number of seconds
@@ -90,75 +93,127 @@ var usernamesInFamilyList = [String]()
    
     
   override func viewWillAppear(_ animated: Bool) {
-//    checkWhoIsInFamilyList()
-// print("I just printed all of your family members :)")
-//    checkWhoIsInFamilyList()
 
     }
     
-    func checkWhoIsInFamilyList() {
-        
-        usernamesRef = Database.database().reference()
-        usernamesRef.child("following").child(User.current.username).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            self.usernamesInFamilyList = []
-            
-            if let dict = snapshot.value as? [String: Bool] {
-                
-                for (key, _) in dict {
-                    self.usernamesInFamilyList.append("\([key] as [String])")
-                   
-                }
-              
-                self.addKeyToArray()//                self.myFamilyListTableView.reloadData()
-            }
-            
-            
-            //            self.myFamilyListTableView.reloadData()
-            
-        }
-        )
-    }
-    
-    
+//    func checkWhoIsInFamilyList() {
+//        
+//        usernamesRef = Database.database().reference()
+//        usernamesRef.child("following").child(User.current.username).observeSingleEvent(of: .value, with: { (snapshot) in
+//            
+//            self.usernamesInFamilyList = []
+//            
+//            if let dict = snapshot.value as? [String: Bool] {
+//                
+//                for (key, _) in dict {
+//                    self.usernamesInFamilyList.append(key) //Retrive all the Usernames into the usernamesInFamilyList array!
+//                }
+//              
+//                self.addKeyToArray()//Run AddKeyToArray
+//            
+//            
+//            } })
+//        }
+    var dictofinviteuid = [String]()
+    var keysOfSpecificUsers = [String]()
     func addKeyToArray(){
-        //self.checkWhoIsInFamilyList()
-        let key = ref.childByAutoId().key
-        let usersinFamilyList = self.usernamesInFamilyList
-        let events = ["ID": key,
+        print("Printing FAMILY List \(self.usernamesInFamilyList)")
+        self.reference.child("invitation").setValue(self.usernamesInFamilyList)
+        self.reference.child("following").child(User.current.username)
+
+        let keys = ref.childByAutoId().key
+        
+        
+       // Data we got from running checWhoIsInFamilyList func!
+        
+        let userID: [String: String] = [User.current.username: User.current.uid]
+      
+        let events = ["ID": keys,
                       "What": whatField.text! as String,
                       "Where": whereField.text! as String,
                       "When": whenField.text! as String,
-                      "AdditionalInfo": additionalField.text! as String]
-//            ,
-//                      "Who?": self.usernamesInFamilyList as [String]] as [String : Any]
-        let event2 = ["Who:": self.usernamesInFamilyList as [String]]
-        print("Print out family list \(usersinFamilyList)")
-        var keyString = [key]
+                      "AdditionalInfo": additionalField.text! as String,
+                      "Owner": userID] as [String : Any]
+     
 
+        var keyString = [keys]//Creating a new list with object "keys"
+    
+        self.reference.child("usersTest").child(User.current.uid).child("family").observeSingleEvent(of: .value, with: { (snapshot) in
+        
+            //FIXX THISS
+            if let dict = snapshot.value as? [String: String] {
+                
+                for (key ,value) in dict { //Retrive all the Usernames into the usernamesInFamilyList array!
+                    
+                    let usa = User.init(uid: value, username: key)
+                    
+                    
+                    print(usa.uid)
+                    
+                    self.uidOfFamily.append(usa) //Append each object to uidOfFamily
+                    
+                    //Append event key to keysOfSpecificUsers
+                    
+                    self.reference.child("usersTest").child(usa.uid).child("invitedto").child(keys).setValue(events)
+                    self.reference.child("usersTest").child(usa.uid).child("InvitedToEvents").setValue(keys)
+                    //                    let invitationsSent = [
+//                        
+//                        "usersTest/\(usa.uid)/invitedtoEvents/" : self.keysOfSpecificUsers] as [String: Any]
+//                    
+//                    self.reference.updateChildValues(invitationsSent) { (error, _) in
+//                        if let error = error {
+//                            assertionFailure(error.localizedDescription)
+//                        }}
+                    
+                    //self.reference.child("usersTest").child(usa.uid).child("invitedtoEvents").setValue(self.keysOfSpecificUsers)
+                    
+                    
+                }
+                
+                
+                
+                
+                
+            }})
         
     usernameRef.child("Event Creation Keys").observeSingleEvent(of: .value, with: { (snapshot) in
+         //let usersinFamilyList = self.usernamesInFamilyList
         
         if let arrayOfStrings = snapshot.value as? [String] {
-            //parertArray.append(contentsOf: arrayOfStrings)
-            keyString.append(contentsOf: arrayOfStrings)
+
+            keyString.append(contentsOf: arrayOfStrings) //Retrive all EventId's
             
-            self.newArrayOfStrings.append(contentsOf: keyString)
         }
         
-        self.ref.child(key).setValue(events)
-        self.usernameRef.child("Event Creation Keys").setValue(keyString)
-       
-         print(keyString)
+    
+        self.ref.child(keys).setValue(events) //Set value of Events child to the event creation Details
+        self.keysOfSpecificUsers.append(keys)
+        
+        
+        self.usernameRef.child("Event Creation Keys").setValue(keyString) //Add all event UID's inside User model
         })
     }
+        
+        
+       
+        
+        
+    
+      
+//        self.invitations.child(key).child("Event Owner").child(events["Owner"]!).child("Invitees").setValue(usersinFamilyList)
+        
+   
+      
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
        ref = Database.database().reference().child("Events").child("\(User.current.uid)")
         
-        
+        reference = Database.database().reference()
         usernameRef = Database.database().reference().child("usersTest").child("\(User.current.uid)")
+        invitations = Database.database().reference().child("Invitations")
       
         
         

@@ -15,6 +15,9 @@ class Event: NSObject {
     var whenis: String
     var AdditionalInfo: String?
     var usernameCreator: String?
+    
+    
+    
     init(whatis: String, whereis: String, whenis: String, AdditionalInfo: String?){
         self.whatis = whatis
         self.whereis = whereis

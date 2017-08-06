@@ -62,12 +62,13 @@ class FIndFamilyViewController: UIViewController {
  */
 
 extension FIndFamilyViewController: UITableViewDataSource {
+  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(users.count)
         return users.count
     }
     
-    //FIXME: Fix blah blah
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FindFamilyCell") as! FindFamilyCell
         cell.delegate = self
