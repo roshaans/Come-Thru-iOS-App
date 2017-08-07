@@ -11,7 +11,7 @@ import UIKit
 import FirebaseDatabase
 
 class EventViewController: UIViewController {
-
+var user: User?
     var usernameRef:DatabaseReference!
 var usernameRefs:DatabaseReference!
     var segment = 0
@@ -38,8 +38,7 @@ var usernameRefs:DatabaseReference!
         super.viewDidLoad()
         
      //   loopOverUid()
-       
-        
+      
         eventViewTable.dataSource = self
         
         eventViewTable.tableFooterView = UIView()
@@ -48,9 +47,18 @@ var usernameRefs:DatabaseReference!
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
         retrieveUID()
         retrieveEventUID()
     
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Show the navigation bar on other view controllers
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -233,8 +241,7 @@ extension EventViewController: UITableViewDataSource {
         
        
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
         switch segment  {
         case 0:

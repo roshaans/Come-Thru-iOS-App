@@ -55,7 +55,7 @@
         <!--EventNotification-->
         <scene sceneID="9S5-pa-xlY">
             <objects>
-                <viewControllerPlaceholder storyboardName="EventNotification" id="PX5-ns-dWa" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="EventNot" storyboardName="EventNotification" id="PX5-ns-dWa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="up2-lb-KW1"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbH-5b-6LX" userLabel="First Responder" sceneMemberID="firstResponder"/>

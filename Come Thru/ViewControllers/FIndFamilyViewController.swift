@@ -12,7 +12,25 @@ class FIndFamilyViewController: UIViewController {
     //MARK: - Properties
     
     var users = [User]()
+    var filteredUsers = [User]()
+    
+    
+    
+    var searchController = UISearchController(searchResultsController: nil)
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    
+    func filterContentForSearchText(searchText: String) {
+        
+        filteredUsers = users.filter{ user in
+            return user.username.lowercased().contains(searchText.lowercased())
+            
+        }
+        
+        tableView.reloadData()
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -20,6 +38,13 @@ class FIndFamilyViewController: UIViewController {
         tableView.rowHeight = 70
         
     NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        
+        
         // Do any additional setup after loading the view.
     }
     func loadList(notification: NSNotification){
@@ -65,6 +90,10 @@ extension FIndFamilyViewController: UITableViewDataSource {
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(users.count)
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredUsers.count
+            
+        }
         return users.count
     }
     
@@ -72,16 +101,27 @@ extension FIndFamilyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FindFamilyCell") as! FindFamilyCell
         cell.delegate = self
+        
+        
         configure(cell: cell, atIndexPath: indexPath)
         
         return cell
     }
     
     func configure(cell: FindFamilyCell, atIndexPath indexPath: IndexPath) {
-        let user = users[indexPath.row]
+        let user: User
+        if searchController.isActive && searchController.searchBar.text != "" {
+            user = filteredUsers[indexPath.row]
+            
+        }
+        else{
+            user = users[indexPath.row]
+           cell.followButton.isSelected = user.isFamily
+        }
+
         
      cell.familyLabel.text = user.username
-     cell.followButton.isSelected = user.isFamily
+     
         
     }
 }
@@ -92,8 +132,9 @@ extension FIndFamilyViewController: FIndFamilyCellDelegate {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         
         followButton.isUserInteractionEnabled = false
+     
         let followee = users[indexPath.row]
-        
+        //Button wont press in searched state
         UserFollowService.setIsFollowing(!followee.isFamily, fromCurrentUserTo: followee) { (success) in
             print("In the closure")
             defer {
@@ -106,4 +147,13 @@ extension FIndFamilyViewController: FIndFamilyCellDelegate {
             self.tableView.reloadRows(at: [indexPath], with: .none)
         }
     }
+}
+
+extension FIndFamilyViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+    
 }

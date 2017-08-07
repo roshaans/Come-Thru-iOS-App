@@ -22,19 +22,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image-1" translatesAutoresizingMaskIntoConstraints="NO" id="fM6-Tr-pzZ">
-                                <rect key="frame" x="-14" y="64" width="398" height="559"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image-1" translatesAutoresizingMaskIntoConstraints="NO" id="fM6-Tr-pzZ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aw5-3G-TD7">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aw5-3G-TD7">
                                 <rect key="frame" x="0.0" y="316" width="375" height="307"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="pGJ-3N-iwi">
+                                    <tableView clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="pGJ-3N-iwi">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="307"/>
                                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="familyCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="familyCell" textLabel="fgz-Z2-c4W" detailTextLabel="PLD-fr-tys" style="IBUITableViewCellStyleSubtitle" id="mz5-u8-WXl" customClass="familyCell" customModule="Come_Thru" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="familyCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="familyCell" textLabel="fgz-Z2-c4W" detailTextLabel="PLD-fr-tys" style="IBUITableViewCellStyleSubtitle" id="mz5-u8-WXl" customClass="familyCell" customModule="Come_Thru" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mz5-u8-WXl" id="bUp-cR-E8y" customClass="familyCell" customModule="Come_Thru" customModuleProvider="target">
@@ -128,9 +126,17 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="fM6-Tr-pzZ" firstAttribute="top" secondItem="Yrd-Te-mjV" secondAttribute="bottom" id="7r0-ub-xrT"/>
+                            <constraint firstItem="aw5-3G-TD7" firstAttribute="bottom" secondItem="em9-7a-sgo" secondAttribute="top" id="8MO-PO-WBw"/>
+                            <constraint firstItem="fM6-Tr-pzZ" firstAttribute="leading" secondItem="eyM-dW-h6l" secondAttribute="leading" id="9mY-rj-MFW"/>
+                            <constraint firstItem="aw5-3G-TD7" firstAttribute="trailing" secondItem="eR9-ah-zmy" secondAttribute="trailing" id="EG9-kN-bbt"/>
                             <constraint firstAttribute="trailing" secondItem="eR9-ah-zmy" secondAttribute="trailing" id="XwD-ki-XLn"/>
+                            <constraint firstItem="aw5-3G-TD7" firstAttribute="top" secondItem="Yrd-Te-mjV" secondAttribute="bottom" constant="252" id="nAL-Qd-yYN"/>
+                            <constraint firstItem="em9-7a-sgo" firstAttribute="top" secondItem="fM6-Tr-pzZ" secondAttribute="bottom" id="o7m-ZT-R3y"/>
+                            <constraint firstAttribute="trailing" secondItem="fM6-Tr-pzZ" secondAttribute="trailing" id="oMa-9y-5i4"/>
                             <constraint firstItem="eR9-ah-zmy" firstAttribute="top" secondItem="Yrd-Te-mjV" secondAttribute="bottom" id="sHJ-QE-p4h"/>
                             <constraint firstItem="eR9-ah-zmy" firstAttribute="leading" secondItem="eyM-dW-h6l" secondAttribute="leading" id="uGR-BE-XWx"/>
+                            <constraint firstItem="aw5-3G-TD7" firstAttribute="leading" secondItem="eR9-ah-zmy" secondAttribute="leading" id="xQJ-Pa-ERA"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="favorite copy" id="MZa-4b-dGt">
@@ -166,13 +172,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="132" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cff-tm-y4x">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="132" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cff-tm-y4x">
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FindFamilyCell" rowHeight="132" id="U7a-R3-Kkf" customClass="FindFamilyCell" customModule="Come_Thru" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="132"/>
+                                        <rect key="frame" x="0.0" y="1" width="375" height="132"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U7a-R3-Kkf" id="JlH-Aw-302">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="131.5"/>
@@ -232,10 +238,19 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchDisplayController" destination="lXl-e4-U8j" id="76i-Qp-Ygd"/>
                         <outlet property="tableView" destination="cff-tm-y4x" id="9vl-2N-c9t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sVz-YY-ELr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="lXl-e4-U8j">
+                    <connections>
+                        <outlet property="delegate" destination="UGg-7a-GTI" id="RNg-hZ-LsD"/>
+                        <outlet property="searchContentsController" destination="UGg-7a-GTI" id="CFy-BM-XRO"/>
+                        <outlet property="searchResultsDataSource" destination="UGg-7a-GTI" id="00d-OC-NIn"/>
+                        <outlet property="searchResultsDelegate" destination="UGg-7a-GTI" id="06c-ak-lRx"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="3268" y="870.31484257871068"/>
         </scene>

@@ -21,7 +21,7 @@ class User: NSObject {
     static var isInMyFamilyList = [String: Bool]()
     
         // MARK: - Init/Users/roshaansiddiqui/Desktop/Makeschool2017/Come Thru/Come Thru.xcodeproj
-        
+    
         init(uid: String, username: String) {
             
             self.uid = uid

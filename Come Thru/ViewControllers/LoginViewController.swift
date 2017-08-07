@@ -10,9 +10,10 @@ import UIKit
 import FirebaseAuth
 import FirebaseAuthUI
 import FirebaseDatabase
+import FacebookLogin
 typealias FIRUser = FirebaseAuth.User
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var loginButton: UIButton!
    
     @IBAction func loginButtonTapped(_ sender: UIButton) {
@@ -36,7 +37,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+      
+        
+      
         // Do any additional setup after loading the view.
     }
 

@@ -11,5 +11,7 @@ target 'Come Thru' do
   pod 'FirebaseUI/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+pod 'FacebookCore'
+  pod 'FacebookLogin'
   pod 'TabPageViewController', '~> 0.2'
 end

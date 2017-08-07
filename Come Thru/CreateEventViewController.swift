@@ -8,8 +8,17 @@
 
 import UIKit
 import FirebaseDatabase
-class CreateEventViewController: UIViewController {
+class CreateEventViewController: UIViewController, UITextFieldDelegate {
     
+    @IBAction func resetButton(_ sender: Any) {
+        whatField.text = ""
+        whereField.text = ""
+        whenField.text = ""
+        additionalField.text = ""
+        self.sentLabel.text = ""
+        self.progressBar.setProgress(0, animated: false)
+        
+    }
     var ref: DatabaseReference!
     var usernameRef: DatabaseReference!
     var invitations: DatabaseReference!
@@ -72,7 +81,7 @@ var usernamesInFamilyList = [String]()
         
         // add the actions (buttons)
         
-        alert.addAction(UIAlertAction(title: "Edit or Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Edit", style: UIAlertActionStyle.destructive, handler: nil))
         
         alert.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.default, handler: { action in
             //THIS IS THE CODE THAT GOES GETS RUN!
@@ -84,8 +93,18 @@ var usernamesInFamilyList = [String]()
             let when = DispatchTime.now() + 1 // change 2 to desired number of seconds
             DispatchQueue.main.asyncAfter(deadline: when) {
                 self.sentLabel.text = "Event created and sent to family!"
+                self.tabBarController?.selectedIndex = 2
 
-            }     }))
+            }
+        
+        
+            
+            
+        })
+        
+        
+        
+        )
 
         // show the alert
         self.present(alert, animated: true, completion: nil)
@@ -117,6 +136,7 @@ var usernamesInFamilyList = [String]()
     var dictofinviteuid = [String]()
     var keysOfSpecificUsers = [String]()
     func addKeyToArray(){
+        
         print("Printing FAMILY List \(self.usernamesInFamilyList)")
         self.reference.child("invitation").setValue(self.usernamesInFamilyList)
         self.reference.child("following").child(User.current.username)
@@ -126,7 +146,7 @@ var usernamesInFamilyList = [String]()
         
        // Data we got from running checWhoIsInFamilyList func!
         
-        let userID: [String: String] = [User.current.username: User.current.uid]
+        let userID: String = User.current.username
       
         let events = ["ID": keys,
                       "What": whatField.text! as String,
@@ -137,7 +157,7 @@ var usernamesInFamilyList = [String]()
      
 
         var keyString = [keys]//Creating a new list with object "keys"
-    
+        
         self.reference.child("usersTest").child(User.current.uid).child("family").observeSingleEvent(of: .value, with: { (snapshot) in
         
             //FIXX THISS
@@ -153,19 +173,11 @@ var usernamesInFamilyList = [String]()
                     self.uidOfFamily.append(usa) //Append each object to uidOfFamily
                     
                     //Append event key to keysOfSpecificUsers
-                    
+                    self.dictofinviteuid.append(keys)
+
                     self.reference.child("usersTest").child(usa.uid).child("invitedto").child(keys).setValue(events)
-                    self.reference.child("usersTest").child(usa.uid).child("InvitedToEvents").setValue(keys)
-                    //                    let invitationsSent = [
-//                        
-//                        "usersTest/\(usa.uid)/invitedtoEvents/" : self.keysOfSpecificUsers] as [String: Any]
-//                    
-//                    self.reference.updateChildValues(invitationsSent) { (error, _) in
-//                        if let error = error {
-//                            assertionFailure(error.localizedDescription)
-//                        }}
-                    
-                    //self.reference.child("usersTest").child(usa.uid).child("invitedtoEvents").setValue(self.keysOfSpecificUsers)
+                    self.reference.child("usersTest").child(usa.uid).child("InvitedToEvents").setValue(self.dictofinviteuid)
+                 
                     
                     
                 }
@@ -180,8 +192,7 @@ var usernamesInFamilyList = [String]()
          //let usersinFamilyList = self.usernamesInFamilyList
         
         if let arrayOfStrings = snapshot.value as? [String] {
-
-            keyString.append(contentsOf: arrayOfStrings) //Retrive all EventId's
+                        keyString.append(contentsOf: arrayOfStrings) //Retrive all EventId's
             
         }
         
@@ -208,6 +219,50 @@ var usernamesInFamilyList = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let datePicker = UIDatePicker()
+        
+        datePicker.datePickerMode = UIDatePickerMode.dateAndTime
+        
+        datePicker.addTarget(self, action: #selector(CreateEventViewController.datePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
+        
+        whenField.inputView = datePicker
+        
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 40))
+        
+        toolbar.barStyle = UIBarStyle.blackTranslucent
+        
+        toolbar.tintColor = UIColor.white
+        
+        let todayButton = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.plain, target: self, action: #selector(CreateEventViewController.todayPressed(sender:)))
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(CreateEventViewController.donePressed(sender:)))
+        
+        let flexButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width/3, height: 40))
+        
+        label.font = UIFont.systemFont(ofSize: 14)
+        
+        label.textColor = UIColor.yellow
+        
+        label.textAlignment = NSTextAlignment.center
+        
+        label.text = "Select a Date"
+        
+        let labelButton = UIBarButtonItem(customView: label)
+        
+        toolbar.setItems([todayButton, flexButton, labelButton, flexButton, doneButton], animated: true)
+        
+        whenField.inputAccessoryView = toolbar
+//        whatField: UITextField!
+//        @IBOutlet weak var whenField: UITextField!
+//        
+//        @IBOutlet weak var whereField: UITextField!
+//        @IBOutlet weak var additionalField:
+        self.whatField.delegate = self
+        self.whenField.delegate = self
+        self.additionalField.delegate = self as? UITextViewDelegate
+        self.whereField.delegate = self
         
        ref = Database.database().reference().child("Events").child("\(User.current.uid)")
         
@@ -218,12 +273,47 @@ var usernamesInFamilyList = [String]()
         
         
     }
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return(true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func donePressed(sender: UIBarButtonItem) {
+        
+        whenField.resignFirstResponder()
+    }
     
+    func todayPressed(sender: UIBarButtonItem) {
+        
+        let formatter = DateFormatter()
+        
+        formatter.dateStyle = DateFormatter.Style.medium
+        
+        formatter.timeStyle = DateFormatter.Style.medium
+        
+       whenField.text = formatter.string(from: NSDate() as Date)
+        
+        whenField.resignFirstResponder()
+    }
+    
+    func datePickerValueChanged(sender: UIDatePicker) {
+        
+        let formatter = DateFormatter()
+        
+        formatter.dateStyle = DateFormatter.Style.medium
+        
+        formatter.timeStyle = DateFormatter.Style.short
+        
+        whenField.text = formatter.string(from: sender.date)
+    }
+
 
     /*
     // MARK: - Navigation

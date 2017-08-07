@@ -33,6 +33,7 @@
 		831986DA1F167A7800F467D9 /* familyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831986D91F167A7800F467D9 /* familyCell.swift */; };
 		831987211F17D57D00F467D9 /* UserFollowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831987201F17D57D00F467D9 /* UserFollowService.swift */; };
 		83462C911F36C3EC00881559 /* Event2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83462C901F36C3EC00881559 /* Event2.swift */; };
+		835097031F380B70007685D0 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835097021F380B70007685D0 /* DetailedViewController.swift */; };
 		83831B2F1F1C00DE000747D3 /* Storyboard + Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83831B2E1F1C00DE000747D3 /* Storyboard + Utility.swift */; };
 		83F3E8281F267B2F0098B2EB /* Samsung-Galaxy-S5-Wallpapers-Sunset-6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83F3E8271F267B2F0098B2EB /* Samsung-Galaxy-S5-Wallpapers-Sunset-6.jpg */; };
 		83F3E82C1F26DE580098B2EB /* SkyBG2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 83F3E82B1F26DE580098B2EB /* SkyBG2.jpeg */; };
@@ -69,6 +70,7 @@
 		831986D91F167A7800F467D9 /* familyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = familyCell.swift; sourceTree = "<group>"; };
 		831987201F17D57D00F467D9 /* UserFollowService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFollowService.swift; sourceTree = "<group>"; };
 		83462C901F36C3EC00881559 /* Event2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event2.swift; sourceTree = "<group>"; };
+		835097021F380B70007685D0 /* DetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 		83831B2E1F1C00DE000747D3 /* Storyboard + Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard + Utility.swift"; sourceTree = "<group>"; };
 		83F3E8271F267B2F0098B2EB /* Samsung-Galaxy-S5-Wallpapers-Sunset-6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Samsung-Galaxy-S5-Wallpapers-Sunset-6.jpg"; sourceTree = "<group>"; };
 		83F3E82B1F26DE580098B2EB /* SkyBG2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SkyBG2.jpeg; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				831986D91F167A7800F467D9 /* familyCell.swift */,
 				83088A2F1F2116A100B57A7A /* EventCellTableViewCell.swift */,
 				83082C9C1F22415100AB074D /* EventCreatedCell.swift */,
+				835097021F380B70007685D0 /* DetailedViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 			files = (
 				83462C911F36C3EC00881559 /* Event2.swift in Sources */,
 				8311B5DF1F1406FF00BD1CCD /* LoginViewController.swift in Sources */,
+				835097031F380B70007685D0 /* DetailedViewController.swift in Sources */,
 				8311B5E71F14618800BD1CCD /* Constants.swift in Sources */,
 				8311B5FA1F15895600BD1CCD /* CreateEventViewController.swift in Sources */,
 				8311B5BC1F13E69100BD1CCD /* FamilyListViewController.swift in Sources */,
