@@ -7,12 +7,13 @@
 //
 
 import UIKit
-
+import SwiftMessages
 class FIndFamilyViewController: UIViewController {
     //MARK: - Properties
     
+    @IBOutlet weak var searchBar: UISearchBar!
     var users = [User]()
-    var filteredUsers = [User]()
+    //var filteredUsers = [User]()
     
     
     
@@ -23,7 +24,7 @@ class FIndFamilyViewController: UIViewController {
     
     func filterContentForSearchText(searchText: String) {
         
-        filteredUsers = users.filter{ user in
+        users = users.filter{ user in
             return user.username.lowercased().contains(searchText.lowercased())
             
         }
@@ -33,16 +34,17 @@ class FIndFamilyViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+       // searchBar.backgroundColor?.cgColor = UIColor(hue: 1.0, saturation: 1.0, brightness: 1.0, alpha: 0.0)
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 70
         
     NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
         
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        definesPresentationContext = true
-        tableView.tableHeaderView = searchController.searchBar
+//        searchController.searchResultsUpdater = self
+//        searchController.dimsBackgroundDuringPresentation = false
+//        definesPresentationContext = true
+//        tableView.tableHeaderView = searchController.searchBar
         
         
         // Do any additional setup after loading the view.
@@ -72,7 +74,8 @@ class FIndFamilyViewController: UIViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        }}}
+        }}
+}
 
 
 
@@ -90,10 +93,10 @@ extension FIndFamilyViewController: UITableViewDataSource {
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(users.count)
-        if searchController.isActive && searchController.searchBar.text != "" {
-            return filteredUsers.count
-            
-        }
+//        if searchController.isActive && searchController.searchBar.text != "" {
+//            return filteredUsers.count
+//            
+//        }
         return users.count
     }
     
@@ -104,22 +107,24 @@ extension FIndFamilyViewController: UITableViewDataSource {
         
         
         configure(cell: cell, atIndexPath: indexPath)
+        cell.backgroundColor = UIColor(white: 0.6, alpha: 0.6)
         
         return cell
     }
     
     func configure(cell: FindFamilyCell, atIndexPath indexPath: IndexPath) {
         let user: User
-        if searchController.isActive && searchController.searchBar.text != "" {
-            user = filteredUsers[indexPath.row]
-            
-        }
-        else{
-            user = users[indexPath.row]
-           cell.followButton.isSelected = user.isFamily
-        }
-
+//        if searchController.isActive && searchController.searchBar.text != "" {
+//            user = filteredUsers[indexPath.row]
+//            
+//        }
+//        else{
+//
+//           cell.followButton.isSelected = user.isFamily
+//        }
         
+        user = users[indexPath.row]
+    cell.followButton.isSelected = user.isFamily
      cell.familyLabel.text = user.username
      
         
@@ -149,11 +154,85 @@ extension FIndFamilyViewController: FIndFamilyCellDelegate {
     }
 }
 
-extension FIndFamilyViewController: UISearchResultsUpdating {
+//extension FIndFamilyViewController: UISearchResultsUpdating {
+//    
+//    func updateSearchResults(for searchController: UISearchController) {
+//        
+//        filterContentForSearchText(searchText: searchController.searchBar.text!)
+//    }
+//    
+//}
+
+extension FIndFamilyViewController: UISearchBarDelegate{
     
-    func updateSearchResults(for searchController: UISearchController) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //filter through data
         
-        filterContentForSearchText(searchText: searchController.searchBar.text!)
+       
+        //self.tableView.reloadData()
+        if searchText == "" {
+            UserFollowService.usersExcludingCurrentUser { [unowned self] (users) in
+                self.users = users
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    
+                }
+            
+            }}
+        if searchText != "" {
+            UserFollowService.usersExcludingCurrentUser { [unowned self] (users) in
+                self.users = users
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    
+                    self.filterContentForSearchText(searchText: searchBar.text!)
+                }
+            }
+
+            
+        }
+        
+        }
+
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        //Make Cancel button SHow
+        
+        searchBar.setShowsCancelButton(true, animated: true)
+        return true
     }
     
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.setShowsCancelButton(false, animated: true)
+       
+        UserFollowService.usersExcludingCurrentUser { [unowned self] (users) in
+            self.users = users
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        return true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.endEditing(true)
+        
+        UserFollowService.usersExcludingCurrentUser { [unowned self] (users) in
+            self.users = users
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }}
+    
+        
+ //Show original data
+    
+
+    
 }
+
+

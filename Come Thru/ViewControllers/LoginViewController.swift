@@ -9,8 +9,8 @@
 import UIKit
 import FirebaseAuth
 import FirebaseAuthUI
+import SAConfettiView
 import FirebaseDatabase
-import FacebookLogin
 typealias FIRUser = FirebaseAuth.User
 class LoginViewController: UIViewController {
     
@@ -37,9 +37,14 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+   
+
+        let confettiView = SAConfettiView(frame: self.view.bounds)
+        self.view.addSubview(confettiView)
+        confettiView.type = .Confetti
+        confettiView.startConfetti()
       
-        
+      view.bringSubview(toFront: loginButton)
       
         // Do any additional setup after loading the view.
     }

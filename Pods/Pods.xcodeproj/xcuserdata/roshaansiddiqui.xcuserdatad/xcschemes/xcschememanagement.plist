@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ButtonProgressBar-iOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FBSDKCoreKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -44,7 +49,42 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>IQKeyboardManagerSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ModernSearchBar-ModernSearchBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ModernSearchBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Come Thru.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SAConfettiView-SAConfettiView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SAConfettiView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftMessages-SwiftMessages.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftMessages.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -62,12 +102,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1296372F461A3D1F21BA741E396BEC94</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>27D52094CE94146648AD541EFC82902B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2FA86E166694D83F34603C5AF621D0E2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3380590F973AFAFA30255D504B7DEDAC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3C491D2FBFA95DA7A2B1F1F9569D9D3B</key>
+		<key>3947CFF5C2B3AE8B6E09B96A5789E59E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,7 +132,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4DC059E04CBA98AEDDB5C34E02D551E9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>593E9479C06FB200807D11AB29EB50BD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5AD7B8AF641D66E0D60F5040F37607DA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,12 +152,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>69A094DC06566846138AC1F157AF0F25</key>
+		<key>7335E9C9689F3B8A16F063A884748533</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7335E9C9689F3B8A16F063A884748533</key>
+		<key>830531D097A1A654F5660BC5017740C4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>93DAD487C72C723C88D25883C74AC934</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -103,6 +173,16 @@
 			<true/>
 		</dict>
 		<key>DDBCFDE490CDFDABF6F16A26F346932D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F05183495D6436003FA857D179D3B746</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FF6BB80C284ACB1902C3231CF4A81549</key>
 		<dict>
 			<key>primary</key>
 			<true/>

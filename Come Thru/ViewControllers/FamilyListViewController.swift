@@ -10,27 +10,29 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuthUI
 import FirebaseAuth
-
+import ButtonProgressBar_iOS
+import SwiftMessages
+import SAConfettiView
 class FamilyListViewController: UIViewController, UITableViewDelegate {
     
+    @IBOutlet weak var shareButton: UIButton!
+    @IBAction func shareButtonPressed(_ sender: Any) {
+        let activityVC = UIActivityViewController(activityItems: ["Hello! I found this very cool app to make organizing events a piece of cake! [MY APP LINK]"], applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        
+        self.present(activityVC, animated: true, completion: nil)
+    }
+   // @IBOutlet weak var contactButton: UIButton!
+    @IBOutlet weak var familyListButton: UIButton!
     
     @IBAction func signOutButton(_ sender: Any) {
-        
-        if Auth.auth().currentUser != nil {
-            do {
-                try? Auth.auth().signOut()
-                
-                if Auth.auth().currentUser == nil {
-                    let loginVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "Login") as! LoginViewController
-                    
-                    self.present(loginVC, animated: true, completion: nil)
-                    
-                }
+        showAlert()
             }
-        }
-        
-    }
+            // show the alert
+    
+    
     @IBOutlet weak var imageScreen: UIImageView!
+    
     
     var emptyArray = [String]()
     
@@ -42,10 +44,54 @@ class FamilyListViewController: UIViewController, UITableViewDelegate {
     @IBAction func reloadButton(_ sender: UIBarButtonItem) {
            }
     
+    func showAlert() {
+        let alert = UIAlertController(title: "Are you sure?", message: "You will be signing out of \(User.current.username).", preferredStyle: UIAlertControllerStyle.alert)
+        
+        // add the actions (buttons)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "Sign Out", style: UIAlertActionStyle.default, handler: { action in
+            //THIS IS THE CODE THAT GOES GETS RUN!
+            
+            
+            if Auth.auth().currentUser != nil {
+                do {
+                    try? Auth.auth().signOut()
+                    
+                    if Auth.auth().currentUser == nil {
+                        let loginVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "Login") as! LoginViewController
+                        
+                        self.present(loginVC, animated: true, completion: nil)
+                        
+                    }
+                }
+                
+            }
+        })
+        )
+        self.present(alert, animated: true, completion: nil)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        myFamilyListTableView.delegate = self
+//        if UserDefaults.standard.isAppAlreadyLaunchedOnce() {
+//            
+//            print("This is not the first time!")
+//            
+//        } else{
+//            
+//           showFirstTimeMessageScreen()
+//        
+//        
+//        }
+        shareButton.layer.cornerRadius = 12
+        shareButton.clipsToBounds = true
+        familyListButton.layer.cornerRadius = 10
+        familyListButton.clipsToBounds = true
+        //contactButton.layer.cornerRadius = 10
+      //  contactButton.clipsToBounds = true
+              myFamilyListTableView.delegate = self
         myFamilyListTableView.tableFooterView = UIView()
         myFamilyListTableView.rowHeight = 71
 
@@ -56,12 +102,65 @@ class FamilyListViewController: UIViewController, UITableViewDelegate {
         
         super.viewWillAppear(animated)
         
-        reloadData()
+         reloadData()
+        
+        
+       
        
     }
-    //
-    
-    
+//   func showFirstTimeMessageScreen() {
+//    var config = SwiftMessages.Config()
+//    // Slide up from the bottom.
+//    config.presentationStyle = .center
+//    config.dimMode = .gray(interactive: true)
+//    let view = MessageView.viewFromNib(layout: .CenteredView)
+//    view.button?.isHidden = true
+//    // Theme message elements with the warning style.
+//    view.configureTheme(.info)
+//    // Add a drop shadow.
+//    view.configureDropShadow()
+//    // Set message title, body, and icon. Here, we're overriding the default warning
+//    // image with an emoji character.
+//    let iconText = ["🤔", "😳", "🙄", "😶"].sm_random()!
+//    view.configureContent(title: "WELCOME!", body: "Head on to 'ADD BY USERNAME' to add your family!", iconText: iconText)
+//    // Show the message.
+//    
+//    
+//    view.buttonTapHandler = { _ in SwiftMessages.hide() }
+//    
+//    // Hide when message view tapped
+//    view.tapHandler = { _ in SwiftMessages.hide() }
+//    SwiftMessages.show(config: config, view: view)
+//    
+//}
+
+
+    func showMessageScreen() {
+        
+        var config = SwiftMessages.Config()
+        // Slide up from the bottom.
+        config.presentationStyle = .center
+        config.dimMode = .gray(interactive: true)
+        let view = MessageView.viewFromNib(layout: .CenteredView)
+        view.button?.isHidden = true
+        // Theme message elements with the warning style.
+        view.configureTheme(.info)
+        // Add a drop shadow.
+        view.configureDropShadow()
+        // Set message title, body, and icon. Here, we're overriding the default warning
+        // image with an emoji character.
+        let iconText = ["🤔", "😳", "🙄", "😶"].sm_random()!
+        view.configureContent(title: "Hmmmm...", body: "Please go to 'Add By Username' to add people to your family!", iconText: iconText)
+        // Show the message.
+        
+        
+        view.buttonTapHandler = { _ in SwiftMessages.hide() }
+        
+        // Hide when message view tapped
+        view.tapHandler = { _ in SwiftMessages.hide() }
+        SwiftMessages.show(config: config, view: view)
+        
+    }
     func reloadData() {
         self.emptyArray = []
         
@@ -78,7 +177,13 @@ class FamilyListViewController: UIViewController, UITableViewDelegate {
                     print(self.emptyArray)
                     
                 }
+
                     self.myFamilyListTableView.reloadData()
+            }
+            
+            if self.emptyArray.isEmpty {
+                
+                self.showMessageScreen()
             }
             self.myFamilyListTableView.reloadData()
             
@@ -121,7 +226,20 @@ extension FamilyListViewController: UITableViewDataSource {
         
     }
 }
+extension UserDefaults {
 
-
+    func isAppAlreadyLaunchedOnce()->Bool{
+    let defaults = UserDefaults.standard
+    
+    if let isAppAlreadyLaunchedOnce = defaults.string(forKey: "isAppAlreadyLaunchedOnce"){
+        print("App already launched : \(isAppAlreadyLaunchedOnce)")
+        return true
+    }else{
+        defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
+        print("App launched first time")
+        return false
+    }
+}
+}
 
 

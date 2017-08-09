@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseDatabase
+import SwiftMessages
+
 class CreateEventViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func resetButton(_ sender: Any) {
@@ -16,9 +18,27 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         whenField.text = ""
         additionalField.text = ""
         self.sentLabel.text = ""
+        signedInAs.text = "Signed in as \(User.current.username)"
         self.progressBar.setProgress(0, animated: false)
+        let view = MessageView.viewFromNib(layout: .StatusLine)
+        // Theme message elements with the warning style.
+        view.configureTheme(.info)
+        // Add a drop shadow.
+        view.configureDropShadow()
+        // Set message title, body, and icon. Here, we're overriding the default warning
+        // image with an emoji character.
+        let iconText = ["😁", "😁", "😊", "😊"].sm_random()!
+        view.configureContent(title: "Reset", body: "All feilds were cleared", iconText: iconText)
+        // Show the message.
+        SwiftMessages.show(view: view)
         
+        // Hide when button tapped
+        view.buttonTapHandler = { _ in SwiftMessages.hide() }
+        
+        // Hide when message view tapped
+        view.tapHandler = { _ in SwiftMessages.hide() }
     }
+    @IBOutlet weak var signedInAs: UILabel!
     var ref: DatabaseReference!
     var usernameRef: DatabaseReference!
     var invitations: DatabaseReference!
@@ -50,6 +70,9 @@ var usernamesInFamilyList = [String]()
         
         //        print(" What: \(what!), Where: \(wheres!), When: \(when!), Who: \(who!) Additional: \(additional ?? "NONE")")
         //    }
+        
+        
+
 
     }
  
@@ -77,7 +100,7 @@ var usernamesInFamilyList = [String]()
         let when = self.whenField!.text
         let additional = self.additionalField!.text
 
-        let alert = UIAlertController(title: "Event Detials", message: " What: \(what!) \n Where: \(wheres!) \n When: \(when!) \n Additional: \(additional ?? "NONE")", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Event Details", message: " What: \(what!) \n Where: \(wheres!) \n When: \(when!) \n Additional: \(additional ?? "NONE")", preferredStyle: UIAlertControllerStyle.alert)
         
         // add the actions (buttons)
         
@@ -90,8 +113,27 @@ var usernamesInFamilyList = [String]()
             self.addKeyToArray()
             self.progressBar.setProgress(1.0, animated: true)
             
+            let view = MessageView.viewFromNib(layout: .TabView)
+            view.button?.isHidden = true
+            // Theme message elements with the warning style.
+            view.configureTheme(.info)
+            // Add a drop shadow.
+            view.configureDropShadow()
+            // Set message title, body, and icon. Here, we're overriding the default warning
+            // image with an emoji character.
+            let iconText = ["😁", "😁", "😊", "😊"].sm_random()!
+            view.configureContent(title: "Success", body: "Invitation Sent!", iconText: iconText)
+            // Show the message.
+            
+            SwiftMessages.show(view: view)
+            
+            view.buttonTapHandler = { _ in SwiftMessages.hide() }
+            
+            // Hide when message view tapped
+            view.tapHandler = { _ in SwiftMessages.hide() }
             let when = DispatchTime.now() + 1 // change 2 to desired number of seconds
             DispatchQueue.main.asyncAfter(deadline: when) {
+                self.signedInAs.text = ""
                 self.sentLabel.text = "Event created and sent to family!"
                 self.tabBarController?.selectedIndex = 2
 
@@ -174,12 +216,13 @@ var usernamesInFamilyList = [String]()
                     
                     //Append event key to keysOfSpecificUsers
                     self.dictofinviteuid.append(keys)
-
+                    
+                self.dictofinviteuid = Array(Set(self.dictofinviteuid))
                     self.reference.child("usersTest").child(usa.uid).child("invitedto").child(keys).setValue(events)
-                    self.reference.child("usersTest").child(usa.uid).child("InvitedToEvents").setValue(self.dictofinviteuid)
-                 
                     
                     
+        self.reference.child("usersTest").child(usa.uid).child("InvitedToEvents").setValue(self.dictofinviteuid)
+
                 }
                 
                 
@@ -219,6 +262,8 @@ var usernamesInFamilyList = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        signedInAs.text = "Signed in as \(User.current.username)"
+        
         let datePicker = UIDatePicker()
         
         datePicker.datePickerMode = UIDatePickerMode.dateAndTime
@@ -243,7 +288,7 @@ var usernamesInFamilyList = [String]()
         
         label.font = UIFont.systemFont(ofSize: 14)
         
-        label.textColor = UIColor.yellow
+        label.textColor = UIColor.white
         
         label.textAlignment = NSTextAlignment.center
         

@@ -5,6 +5,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - ButtonProgressBar-iOS (1.0.0)
   - FacebookCore (0.2.0):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.15)
@@ -60,9 +61,14 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.10)
+  - IQKeyboardManagerSwift (4.0.8)
+  - ModernSearchBar (1.4)
+  - SAConfettiView (0.1.8)
+  - SwiftMessages (3.4.0)
   - TabPageViewController (0.2.7)
 
 DEPENDENCIES:
+  - ButtonProgressBar-iOS
   - FacebookCore
   - FacebookLogin
   - Firebase/Auth
@@ -70,10 +76,15 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - FirebaseUI/Auth
+  - IQKeyboardManagerSwift (= 4.0.8)
+  - ModernSearchBar (~> 1.4)
+  - SAConfettiView
+  - SwiftMessages
   - TabPageViewController (~> 0.2)
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  ButtonProgressBar-iOS: 41f596a677947c565acd2be029f09892aa1aaf0e
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
   FBSDKCoreKit: f8c9eb0dd34a9cd277c7b60da4b32226d142502d
@@ -88,8 +99,12 @@ SPEC CHECKSUMS:
   FirebaseUI: 5ebebe2c096c71f20abd1d43d0388958373bdaa0
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
+  IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
+  ModernSearchBar: d888b62f960c4d91f8662f0720e1544d19847e7f
+  SAConfettiView: c87031a2280659261b730fce3669fb10e73636ee
+  SwiftMessages: e20aa1557fde1525ea369361bec4943cc0d08e7c
   TabPageViewController: c37a1257a50c2b50712dde61bf499768eee95b67
 
-PODFILE CHECKSUM: d0c5a39f52632f4eb9c079d3e34cac20b1acc55c
+PODFILE CHECKSUM: 87f5f94b1dbdd892db6ae12e5bed66e368edd34b
 
 COCOAPODS: 1.2.1

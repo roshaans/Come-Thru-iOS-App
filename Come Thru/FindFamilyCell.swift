@@ -33,13 +33,15 @@ class FindFamilyCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-followButton.layer.borderColor = UIColor.lightGray.cgColor
+followButton.layer.borderColor = UIColor.clear.cgColor
         followButton.layer.borderWidth = 1
         followButton.layer.cornerRadius = 6
         followButton.clipsToBounds = true
         
         followButton.setTitle("Add to family", for: .normal)
         followButton.setTitle("In Family", for: .selected)
+        followButton.setTitleColor(UIColor.white, for: .normal)
+        followButton.setTitleColor(UIColor.black, for: .selected)
     }
 
     

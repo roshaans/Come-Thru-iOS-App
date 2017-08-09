@@ -37,6 +37,7 @@ var usernameRefs:DatabaseReference!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
      //   loopOverUid()
       
         eventViewTable.dataSource = self
@@ -177,7 +178,8 @@ var usernameRefs:DatabaseReference!
                     let AdditionalInfo2 = dict["AdditionalInfo"]!
                     let usernameCreator2 = dict["Owner"]!
                     
-                    let events = Event2(whatis2: whatis2 as! String, whereis2: whereis2 as! String, whenis2: whenis2 as! String, AdditionalInfo2: AdditionalInfo2 as? String, usernameCreator2: usernameCreator2 as! String)
+                    
+                    let events = Event2(whatis2: whatis2 as! String, whereis2: whereis2 as! String, whenis2: whenis2 as! String, AdditionalInfo2: AdditionalInfo2 as? String, usernameCreator2: "Invitation By \(usernameCreator2: usernameCreator2)" )
                     
                     self.eventInvited.append(events)
                     print("ABOUT TO PRINT EVENT!!!")
@@ -203,15 +205,70 @@ var usernameRefs:DatabaseReference!
         
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+                // 1
+                if let identifier = segue.identifier {
+                    // 2
+                    if identifier == "displayDetailedInfo" {
+                        // 3
+                        let indexPath = eventViewTable.indexPathForSelectedRow!
+                        // 2
+                        let user = eventCreated[indexPath.row]
+                        // 3
+                        let detailed = segue.destination as! DetailedViewController
+                        
+                        detailed.user = user
+                    
+                        print(eventCreated[indexPath.row].whatis)
+                        print(eventCreated[indexPath.row].whereis)
+                        print(eventCreated[indexPath.row].whereis)
+                        print(eventCreated[indexPath.row].whereis)
+                        
+                        
+                        
+                        print("Events printed")
+
+                        
+                        
+//                        displayNoteViewController = user
+                        
+                    }
+                }
+        if let identifier = segue.identifier {
+            // 2
+            if identifier == "displayDetailedInfoInvited" {
+                // 3
+                let indexPath = eventViewTable.indexPathForSelectedRow!
+                // 2
+                let invited = eventInvited[indexPath.row]
+                // 3
+                let Invitedto = segue.destination as! DetailedInvitedViewController
+                
+                Invitedto.invited = invited
+                
+                
+                
+                
+                print("Events printed")
+                
+                
+                
+                //                        displayNoteViewController = user
+                
+            }
+        }
         
+            }
+
+    
     
     }
-    
-    
+
+
 
 //        child("\(key)")
-        
-       
+
+
     /*
     // MARK: - Navigation
 
@@ -227,12 +284,11 @@ var usernameRefs:DatabaseReference!
 extension EventViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        print("The count of the rows is ")
-     
+        
+        
         switch segment {
             
         case 0:  return self.eventCreated.count
-            
-            
         case 1: return self.eventInvited.count
        
         default: return 1
@@ -241,8 +297,9 @@ extension EventViewController: UITableViewDataSource {
         
        
     }
-       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
+       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         switch segment  {
         case 0:
             
@@ -271,6 +328,5 @@ extension EventViewController: UITableViewDataSource {
     let cell = eventViewTable.dequeueReusableCell(withIdentifier: "nothing", for: indexPath) as! EventCellTableViewCell
        return cell
         
-        
-    }
+        }
 }

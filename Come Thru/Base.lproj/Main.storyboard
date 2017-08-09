@@ -21,7 +21,7 @@
                     <connections>
                         <segue destination="mht-P8-Kqg" kind="relationship" relationship="viewControllers" id="kZw-JT-56K"/>
                         <segue destination="kK9-DH-kSj" kind="relationship" relationship="viewControllers" id="mmo-Vy-sff"/>
-                        <segue destination="PX5-ns-dWa" kind="relationship" relationship="viewControllers" id="KUX-9p-Lau"/>
+                        <segue destination="5gP-EI-wCz" kind="relationship" relationship="viewControllers" id="KUX-9p-Lau"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TMd-4a-NLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -56,14 +56,36 @@
         <scene sceneID="9S5-pa-xlY">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="EventNot" storyboardName="EventNotification" id="PX5-ns-dWa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="up2-lb-KW1"/>
+                    <navigationItem key="navigationItem" id="gWD-Ot-SBD"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbH-5b-6LX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1095" y="-122"/>
+            <point key="canvasLocation" x="2032.8" y="-122.33883058470765"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cIc-cE-BKi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5gP-EI-wCz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="favorite" id="up2-lb-KW1">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hfu-hG-7p7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PX5-ns-dWa" kind="relationship" relationship="rootViewController" id="BQK-4V-EC4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Buz-WS-yCp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1093.5999999999999" y="-122.78860569715144"/>
         </scene>
     </scenes>
     <resources>
+        <image name="favorite" width="28" height="28"/>
         <image name="favorite copy" width="26" height="24"/>
         <image name="favorite copy 2" width="22" height="22"/>
     </resources>

@@ -15,7 +15,6 @@
 		8311B59A1F13D99C00BD1CCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311B5991F13D99C00BD1CCD /* AppDelegate.swift */; };
 		8311B59F1F13D99C00BD1CCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8311B59D1F13D99C00BD1CCD /* Main.storyboard */; };
 		8311B5A21F13D99C00BD1CCD /* Come_Thru.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8311B5A01F13D99C00BD1CCD /* Come_Thru.xcdatamodeld */; };
-		8311B5A41F13D99C00BD1CCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8311B5A31F13D99C00BD1CCD /* Assets.xcassets */; };
 		8311B5BA1F13E42F00BD1CCD /* TabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311B5B91F13E42F00BD1CCD /* TabBarControllerViewController.swift */; };
 		8311B5BC1F13E69100BD1CCD /* FamilyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311B5BB1F13E69100BD1CCD /* FamilyListViewController.swift */; };
 		8311B5BF1F13E6AC00BD1CCD /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311B5BE1F13E6AC00BD1CCD /* EventViewController.swift */; };
@@ -34,7 +33,12 @@
 		831987211F17D57D00F467D9 /* UserFollowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831987201F17D57D00F467D9 /* UserFollowService.swift */; };
 		83462C911F36C3EC00881559 /* Event2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83462C901F36C3EC00881559 /* Event2.swift */; };
 		835097031F380B70007685D0 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835097021F380B70007685D0 /* DetailedViewController.swift */; };
+		83623ABF1F38CC3600DF1BAE /* DetailedInvitedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83623ABE1F38CC3600DF1BAE /* DetailedInvitedViewController.swift */; };
 		83831B2F1F1C00DE000747D3 /* Storyboard + Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83831B2E1F1C00DE000747D3 /* Storyboard + Utility.swift */; };
+		839858E11F3A831800AA0FFC /* iTunesArtwork@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 839858E01F3A831800AA0FFC /* iTunesArtwork@3x.png */; };
+		839858E31F3A842700AA0FFC /* Whiteversionlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 839858E21F3A842700AA0FFC /* Whiteversionlogo.png */; };
+		839947211F3A700C0037B6D8 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 839947201F3A700C0037B6D8 /* Launch Screen.storyboard */; };
+		83E891011F394C4A004323E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8311B5A31F13D99C00BD1CCD /* Assets.xcassets */; };
 		83F3E8281F267B2F0098B2EB /* Samsung-Galaxy-S5-Wallpapers-Sunset-6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83F3E8271F267B2F0098B2EB /* Samsung-Galaxy-S5-Wallpapers-Sunset-6.jpg */; };
 		83F3E82C1F26DE580098B2EB /* SkyBG2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 83F3E82B1F26DE580098B2EB /* SkyBG2.jpeg */; };
 		D42D546FD5DB7CA2D73D9A62 /* Pods_Come_Thru.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED7F3D2F69D28194F142864B /* Pods_Come_Thru.framework */; };
@@ -71,7 +75,11 @@
 		831987201F17D57D00F467D9 /* UserFollowService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFollowService.swift; sourceTree = "<group>"; };
 		83462C901F36C3EC00881559 /* Event2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event2.swift; sourceTree = "<group>"; };
 		835097021F380B70007685D0 /* DetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
+		83623ABE1F38CC3600DF1BAE /* DetailedInvitedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedInvitedViewController.swift; sourceTree = "<group>"; };
 		83831B2E1F1C00DE000747D3 /* Storyboard + Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard + Utility.swift"; sourceTree = "<group>"; };
+		839858E01F3A831800AA0FFC /* iTunesArtwork@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@3x.png"; sourceTree = "<group>"; };
+		839858E21F3A842700AA0FFC /* Whiteversionlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Whiteversionlogo.png; sourceTree = "<group>"; };
+		839947201F3A700C0037B6D8 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		83F3E8271F267B2F0098B2EB /* Samsung-Galaxy-S5-Wallpapers-Sunset-6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Samsung-Galaxy-S5-Wallpapers-Sunset-6.jpg"; sourceTree = "<group>"; };
 		83F3E82B1F26DE580098B2EB /* SkyBG2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SkyBG2.jpeg; sourceTree = "<group>"; };
 		BB1A0D99DC84B0E53C168190 /* Pods-Come Thru.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Come Thru.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Come Thru/Pods-Come Thru.debug.xcconfig"; sourceTree = "<group>"; };
@@ -137,9 +145,12 @@
 			isa = PBXGroup;
 			children = (
 				8311B5C81F13F9EE00BD1CCD /* Login.storyboard */,
+				839858E01F3A831800AA0FFC /* iTunesArtwork@3x.png */,
+				839947201F3A700C0037B6D8 /* Launch Screen.storyboard */,
+				839858E21F3A842700AA0FFC /* Whiteversionlogo.png */,
+				8311B5F71F15892D00BD1CCD /* CreateEvent.storyboard */,
 				8311B59D1F13D99C00BD1CCD /* Main.storyboard */,
 				83088A291F2115FF00B57A7A /* EventNotification.storyboard */,
-				8311B5F71F15892D00BD1CCD /* CreateEvent.storyboard */,
 				8311B5EC1F151CF600BD1CCD /* FamilyList.storyboard */,
 				83F3E8271F267B2F0098B2EB /* Samsung-Galaxy-S5-Wallpapers-Sunset-6.jpg */,
 				83F3E82B1F26DE580098B2EB /* SkyBG2.jpeg */,
@@ -158,6 +169,7 @@
 				83088A2F1F2116A100B57A7A /* EventCellTableViewCell.swift */,
 				83082C9C1F22415100AB074D /* EventCreatedCell.swift */,
 				835097021F380B70007685D0 /* DetailedViewController.swift */,
+				83623ABE1F38CC3600DF1BAE /* DetailedInvitedViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -254,7 +266,7 @@
 				TargetAttributes = {
 					8311B5951F13D99C00BD1CCD = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 42457A4N6V;
+						DevelopmentTeam = 9K5HE8TBHY;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -284,10 +296,13 @@
 			files = (
 				8311B5C91F13F9EE00BD1CCD /* Login.storyboard in Resources */,
 				8311B5C71F13EA4600BD1CCD /* GoogleService-Info.plist in Resources */,
-				8311B5A41F13D99C00BD1CCD /* Assets.xcassets in Resources */,
 				8311B5F81F15892D00BD1CCD /* CreateEvent.storyboard in Resources */,
 				83F3E82C1F26DE580098B2EB /* SkyBG2.jpeg in Resources */,
+				839858E11F3A831800AA0FFC /* iTunesArtwork@3x.png in Resources */,
+				83E891011F394C4A004323E9 /* Assets.xcassets in Resources */,
 				83088A2B1F2115FF00B57A7A /* EventNotification.storyboard in Resources */,
+				839858E31F3A842700AA0FFC /* Whiteversionlogo.png in Resources */,
+				839947211F3A700C0037B6D8 /* Launch Screen.storyboard in Resources */,
 				8311B5CB1F13FBB600BD1CCD /* Default-568h@2x.png in Resources */,
 				8311B5EE1F151CF600BD1CCD /* FamilyList.storyboard in Resources */,
 				83F3E8281F267B2F0098B2EB /* Samsung-Galaxy-S5-Wallpapers-Sunset-6.jpg in Resources */,
@@ -353,6 +368,7 @@
 				83462C911F36C3EC00881559 /* Event2.swift in Sources */,
 				8311B5DF1F1406FF00BD1CCD /* LoginViewController.swift in Sources */,
 				835097031F380B70007685D0 /* DetailedViewController.swift in Sources */,
+				83623ABF1F38CC3600DF1BAE /* DetailedInvitedViewController.swift in Sources */,
 				8311B5E71F14618800BD1CCD /* Constants.swift in Sources */,
 				8311B5FA1F15895600BD1CCD /* CreateEventViewController.swift in Sources */,
 				8311B5BC1F13E69100BD1CCD /* FamilyListViewController.swift in Sources */,
@@ -503,13 +519,15 @@
 			baseConfigurationReference = BB1A0D99DC84B0E53C168190 /* Pods-Come Thru.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 42457A4N6V;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9K5HE8TBHY;
 				INFOPLIST_FILE = "$(SRCROOT)/Come Thru/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "MakeSchool.Come-Thru";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.RoshaanSiddiqui.Come-Thru";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -518,13 +536,15 @@
 			baseConfigurationReference = 7637EA8F522C437F9739EAFF /* Pods-Come Thru.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 42457A4N6V;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9K5HE8TBHY;
 				INFOPLIST_FILE = "$(SRCROOT)/Come Thru/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "MakeSchool.Come-Thru";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.RoshaanSiddiqui.Come-Thru";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

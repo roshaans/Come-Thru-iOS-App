@@ -21,26 +21,26 @@ class User: NSObject {
     static var isInMyFamilyList = [String: Bool]()
     
         // MARK: - Init/Users/roshaansiddiqui/Desktop/Makeschool2017/Come Thru/Come Thru.xcodeproj
-    
         init(uid: String, username: String) {
             
             self.uid = uid
             self.username = username
             super.init()
         }
-    
-   
         init?(snapshot: DataSnapshot) {
           
             guard let dict = snapshot.value as? [String : Any],
                 let username = dict["username"] as? String
-                else { return nil }
+                else {
+                    
+                    return nil
+         
+            }
             
             self.uid = snapshot.key
             self.username = username
               super.init()
     }
-    
     required init?(coder aDecoder: NSCoder) {
         guard let uid = aDecoder.decodeObject(forKey: Constants.UserDefaults.uid) as? String,
             let username = aDecoder.decodeObject(forKey: Constants.UserDefaults.username) as? String
@@ -52,15 +52,11 @@ class User: NSObject {
         super.init()
     }
     private static var _current: User?
-    
-    // 2
     static var current: User {
-        // 3
         guard let currentUser = _current else {
             fatalError("Error: current user doesn't exist")
         }
         
-        // 4
         return currentUser
     }
     

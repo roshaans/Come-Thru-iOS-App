@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import Firebase
-import FacebookLogin
+import IQKeyboardManagerSwift
 //#import <FBSDKCoreKit/FBSDKCoreKit.h>
 //import TabPageViewController
 
@@ -21,10 +21,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+      
+      
+        
+        func isAppAlreadyLaunchedOnce()->Bool{
+            let defaults = UserDefaults.standard
+            
+            if let isAppAlreadyLaunchedOnce = defaults.string(forKey: "isAppAlreadyLaunchedOnce"){
+                print("App already launched : \(isAppAlreadyLaunchedOnce)")
+                return true
+            }else{
+                defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
+                print("App launched first time")
+                return false
+            }
+        }
+        
         FirebaseApp.configure()
         
         configureInitialRootViewController(for: window)
-    
+        
+        IQKeyboardManager.sharedManager().enable = true
+        
 //        window?.rootViewController = wheelTabController
         
         return true

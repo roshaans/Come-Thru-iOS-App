@@ -12,6 +12,11 @@ target 'Come Thru' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
 pod 'FacebookCore'
+pod "ButtonProgressBar-iOS"
   pod 'FacebookLogin'
+pod "SAConfettiView"
+pod 'ModernSearchBar', '~> 1.4'
+pod 'SwiftMessages'
+pod 'IQKeyboardManagerSwift', '4.0.8'
   pod 'TabPageViewController', '~> 0.2'
 end
