@@ -14,5 +14,5 @@ Download the app via the app store [here](https://apps.apple.com/us/app/come-thr
 - Learned to use Sketch to create beautiful designs
 - Usertesting app for feedback
 
-<img src = "Images/comeThru.png" /img>
+<img src = "Images/comeThru.png" />
 
