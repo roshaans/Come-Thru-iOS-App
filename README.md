@@ -1,4 +1,4 @@
-# Come Thru - Invite Your Family
+# 👨‍👩‍👧‍👧Come Thru - Invite Your Family
 
 ### This was my first iOS application that I made using Swift and Xcode. The app lets you add your family members on the app and invite them for private events. 
 
