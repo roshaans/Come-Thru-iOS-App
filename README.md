@@ -4,6 +4,10 @@
 
 Download the app via the app store [here](https://apps.apple.com/us/app/come-thru-invite-your-family-within-seconds/id1269292136)
 
+> ## Check out a video showcasing the app
+[![Family Invitation App - Come Thru](http://img.youtube.com/vi/en0xuytWNn8/0.jpg)](http://www.youtube.com/watch?v=en0xuytWNn8 "Family Invitation App")
+
+
 # Things I learned
 
 - Utilizing the Model View Controller Architecture to write programs
